@@ -21,6 +21,22 @@ const DocumentUpload = ({ onNext, onBack, totalPoints, recentPoints, currentStep
   const [panFile, setPanFile] = useState<File | null>(null);
   const [aadhaarNumber, setAadhaarNumber] = useState("");
   const [panNumber, setPanNumber] = useState("");
+  const [panError, setPanError] = useState("");
+
+  // PAN format: ABCDE1234F (5 letters, 4 digits, 1 letter)
+  const validatePAN = (pan: string) => {
+    const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+    if (pan.length === 0) {
+      setPanError("");
+      return false;
+    }
+    if (!panRegex.test(pan)) {
+      setPanError("Invalid format. Use: ABCDE1234F");
+      return false;
+    }
+    setPanError("");
+    return true;
+  };
 
   const handleAadhaarUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -37,22 +53,38 @@ const DocumentUpload = ({ onNext, onBack, totalPoints, recentPoints, currentStep
   };
 
   const handleContinue = () => {
-    if (aadhaarFile && panFile && aadhaarNumber.length === 12 && panNumber.length === 10) {
-      toast.success("Documents uploaded! +50 Points earned");
-      setTimeout(onNext, 1000);
-    } else {
-      toast.error("Please upload both documents and fill in the details");
+    const isPANValid = validatePAN(panNumber);
+    
+    if (!aadhaarFile || !panFile) {
+      toast.error("Please upload both documents");
+      return;
     }
+    
+    if (aadhaarNumber.length !== 12) {
+      toast.error("Aadhaar number must be 12 digits");
+      return;
+    }
+    
+    if (!isPANValid) {
+      toast.error("Please enter valid PAN in format: ABCDE1234F");
+      return;
+    }
+    
+    toast.success("Documents uploaded! +50 Points earned");
+    setTimeout(onNext, 1000);
   };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-primary to-secondary p-4 text-white">
-        <button onClick={onBack} className="mb-4">
+        <div className="flex items-center justify-between mb-2">
+          <img src="/au-bank-logo.svg" alt="AU Small Finance Bank" className="h-8" />
+          <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
+        </div>
+        <button onClick={onBack} className="text-white/80 hover:text-white text-sm">
           ← Back
         </button>
-        <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
       </div>
 
       <ProgressIndicator steps={steps} currentStep={currentStep} />
@@ -134,11 +166,33 @@ const DocumentUpload = ({ onNext, onBack, totalPoints, recentPoints, currentStep
               <Label htmlFor="pan-number">PAN Number</Label>
               <Input
                 id="pan-number"
-                placeholder="Enter 10-character PAN number"
+                placeholder="ABCDE1234F"
                 value={panNumber}
-                onChange={(e) => setPanNumber(e.target.value.toUpperCase())}
+                onChange={(e) => {
+                  const value = e.target.value.toUpperCase();
+                  setPanNumber(value);
+                  if (value.length === 10) {
+                    validatePAN(value);
+                  } else {
+                    setPanError("");
+                  }
+                }}
                 maxLength={10}
+                className={panError ? "border-destructive" : ""}
               />
+              {panError && (
+                <p className="text-xs text-destructive mt-1">{panError}</p>
+              )}
+              {!panError && panNumber.length === 0 && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  Format: 5 letters + 4 digits + 1 letter (e.g., ABCDE1234F)
+                </p>
+              )}
+              {!panError && panNumber.length === 10 && (
+                <p className="text-xs text-accent mt-1 flex items-center gap-1">
+                  <Check className="w-3 h-3" /> Valid PAN format
+                </p>
+              )}
             </div>
 
             <div className="space-y-2">

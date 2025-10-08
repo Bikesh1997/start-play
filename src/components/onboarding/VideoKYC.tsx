@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Video, Check } from "lucide-react";
+import { Video, Check, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 import ProgressIndicator from "../ProgressIndicator";
 import GamificationDisplay from "../GamificationDisplay";
@@ -33,7 +33,8 @@ const VideoKYC = ({ onNext, onBack, totalPoints, recentPoints, currentStep, step
   };
 
   const handleContinue = () => {
-    onNext();
+    toast.success("✅ Video KYC completed! Now complete your profile.");
+    setTimeout(onNext, 500);
   };
 
   return (
@@ -49,10 +50,13 @@ const VideoKYC = ({ onNext, onBack, totalPoints, recentPoints, currentStep, step
 
       {/* Header */}
       <div className="bg-gradient-to-r from-primary to-secondary p-4 text-white">
-        <button onClick={onBack} className="mb-4">
+        <div className="flex items-center justify-between mb-2">
+          <img src="/au-bank-logo.svg" alt="AU Small Finance Bank" className="h-8" />
+          <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
+        </div>
+        <button onClick={onBack} className="text-white/80 hover:text-white text-sm">
           ← Back
         </button>
-        <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
       </div>
 
       <ProgressIndicator steps={steps} currentStep={currentStep} />
@@ -138,12 +142,21 @@ const VideoKYC = ({ onNext, onBack, totalPoints, recentPoints, currentStep, step
               Start Video KYC
             </Button>
           ) : kycCompleted ? (
-            <Button
-              onClick={handleContinue}
-              className="w-full bg-accent hover:bg-accent/90 text-lg py-6 rounded-xl"
-            >
-              Continue to Status
-            </Button>
+            <>
+              <div className="bg-accent/10 border border-accent/30 rounded-xl p-4 text-center space-y-2">
+                <p className="text-sm font-semibold text-accent">🎉 Verification Complete!</p>
+                <p className="text-xs text-muted-foreground">
+                  Your identity has been verified. Next: Complete your profile.
+                </p>
+              </div>
+              <Button
+                onClick={handleContinue}
+                className="w-full bg-primary hover:bg-primary/90 text-lg py-6 rounded-xl"
+              >
+                View Status & Next Steps
+                <TrendingUp className="w-5 h-5 ml-2" />
+              </Button>
+            </>
           ) : (
             <p className="text-center text-sm text-muted-foreground">
               Please wait while we connect you to an agent...

@@ -56,10 +56,13 @@ const AccountTypeSelection = ({ onNext, onBack, totalPoints, recentPoints, curre
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <div className="bg-gradient-to-r from-primary to-secondary p-4 text-white">
-        <button onClick={onBack} className="mb-4">
+        <div className="flex items-center justify-between mb-2">
+          <img src="/au-bank-logo.svg" alt="AU Small Finance Bank" className="h-8" />
+          <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
+        </div>
+        <button onClick={onBack} className="text-white/80 hover:text-white text-sm">
           ← Back
         </button>
-        <GamificationDisplay totalPoints={totalPoints} recentPoints={recentPoints} />
       </div>
 
       <ProgressIndicator steps={steps} currentStep={currentStep} />

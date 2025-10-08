@@ -18,7 +18,10 @@ const KYCStatus = ({ onComplete, totalPoints, currentStep, steps }: KYCStatusPro
 
       {/* Header */}
       <div className="bg-gradient-to-r from-primary to-secondary p-4 text-white">
-        <GamificationDisplay totalPoints={totalPoints} recentPoints={200} />
+        <div className="flex items-center justify-between">
+          <img src="/au-bank-logo.svg" alt="AU Small Finance Bank" className="h-8" />
+          <GamificationDisplay totalPoints={totalPoints} recentPoints={200} />
+        </div>
       </div>
 
       <ProgressIndicator steps={steps} currentStep={currentStep} />
@@ -121,14 +124,51 @@ const KYCStatus = ({ onComplete, totalPoints, currentStep, steps }: KYCStatusPro
             </div>
           </div>
 
+          {/* Next Steps */}
+          <div className="bg-gradient-to-br from-primary/10 to-primary/5 p-6 rounded-2xl border-2 border-primary/30 space-y-4 mt-8">
+            <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary" />
+              Next Steps to Complete Your Profile
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3 p-3 bg-card rounded-lg">
+                <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-primary">1</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Add Nominee Details</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">Secure your account by adding a nominee</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 p-3 bg-card rounded-lg">
+                <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-primary">2</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Complete Your Profile</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">Add occupation, income, and other details</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3 p-3 bg-card rounded-lg">
+                <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-xs font-bold text-primary">3</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Start Banking</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">Begin your AU Bank journey</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
           {/* CTA */}
           <Button
             onClick={onComplete}
             size="lg"
             className="w-full bg-primary hover:bg-primary/90 text-lg py-6 rounded-xl mt-8"
           >
-            <TrendingUp className="w-5 h-5 mr-2" />
-            Start Banking
+            Complete Your Profile
+            <TrendingUp className="w-5 h-5 ml-2" />
           </Button>
         </div>
       </div>
