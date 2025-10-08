@@ -21,8 +21,8 @@ All colors MUST be HSL.
     --primary: 16 100% 59%;
     --primary-foreground: 0 0% 100%;
 
-    /* Navy Blue */
-    --secondary: 233 47% 17%;
+    /* AU Bank Purple */
+    --secondary: 280 60% 55%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 5% 96%;
@@ -74,7 +74,7 @@ All colors MUST be HSL.
     --primary: 16 100% 59%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 233 47% 17%;
+    --secondary: 280 60% 55%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 240 20% 20%;
