@@ -14,6 +14,7 @@ import { ScheduleEmailModal, ScheduleData } from '@/components/reports/ScheduleE
 import { NaturalLanguageQuery } from '@/components/reports/NaturalLanguageQuery';
 import { DrillDownModal } from '@/components/reports/DrillDownModal';
 import { ThresholdAlerts, generateThresholdAlerts } from '@/components/reports/ThresholdAlerts';
+import { ConfigurableReportTable } from '@/components/reports/ConfigurableReportTable';
 import { exportToPDF, exportToExcel } from '@/utils/reportExport';
 import { 
   leads, sales, rmPerformance, customers, campaigns, systemUsage,
@@ -234,6 +235,9 @@ const SmartReports = () => {
         </CardContent>
       </Card>
 
+      {/* Configurable Report Table */}
+      <ConfigurableReportTable />
+      
       {/* Tabs for Different Report Views */}
       <Tabs defaultValue="overview" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
