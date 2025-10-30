@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -49,18 +49,43 @@ const SmartReports = () => {
   const [drillDownData, setDrillDownData] = useState<any>(null);
   const [queryResult, setQueryResult] = useState<any>(null);
 
-  // Filter data based on role
-  const filteredLeads = filterDataByRole(selectedRole, selectedUser, leads);
-  const filteredSales = filterDataByRole(selectedRole, selectedUser, sales);
-  const filteredPerformance = filterDataByRole(selectedRole, selectedUser, rmPerformance);
-  const filteredCustomers = filterDataByRole(selectedRole, selectedUser, customers);
-  const filteredSystemUsage = filterDataByRole(selectedRole, selectedUser, systemUsage);
+  // Memoize filtered data to prevent unnecessary recalculations
+  const filteredLeads = useMemo(() => 
+    filterDataByRole(selectedRole, selectedUser, leads),
+    [selectedRole, selectedUser]
+  );
   
-  // Generate AI insights
-  const aiInsights = generateAIInsights(filteredSales, filteredPerformance, filteredLeads);
+  const filteredSales = useMemo(() => 
+    filterDataByRole(selectedRole, selectedUser, sales),
+    [selectedRole, selectedUser]
+  );
   
-  // Generate threshold alerts
-  const thresholdAlerts = generateThresholdAlerts(filteredPerformance, filteredLeads, filteredSystemUsage);
+  const filteredPerformance = useMemo(() => 
+    filterDataByRole(selectedRole, selectedUser, rmPerformance),
+    [selectedRole, selectedUser]
+  );
+  
+  const filteredCustomers = useMemo(() => 
+    filterDataByRole(selectedRole, selectedUser, customers),
+    [selectedRole, selectedUser]
+  );
+  
+  const filteredSystemUsage = useMemo(() => 
+    filterDataByRole(selectedRole, selectedUser, systemUsage),
+    [selectedRole, selectedUser]
+  );
+  
+  // Memoize AI insights generation
+  const aiInsights = useMemo(() => 
+    generateAIInsights(filteredSales, filteredPerformance, filteredLeads),
+    [filteredSales, filteredPerformance, filteredLeads]
+  );
+  
+  // Memoize threshold alerts
+  const thresholdAlerts = useMemo(() => 
+    generateThresholdAlerts(filteredPerformance, filteredLeads, filteredSystemUsage),
+    [filteredPerformance, filteredLeads, filteredSystemUsage]
+  );
 
   const handleFilterChange = (newFilters: any) => {
     setFilters({ ...filters, ...newFilters });
@@ -71,9 +96,12 @@ const SmartReports = () => {
     setDrillDownData(result);
   };
 
-  const getReportData = () => {
+  // Memoize report data calculation
+  const reportData = useMemo(() => {
     const totalSales = filteredSales.reduce((sum, s) => sum + s.amount, 0);
-    const avgScore = filteredPerformance.reduce((sum, p) => sum + p.score, 0) / filteredPerformance.length;
+    const avgScore = filteredPerformance.length > 0 
+      ? filteredPerformance.reduce((sum, p) => sum + p.score, 0) / filteredPerformance.length 
+      : 0;
     const conversionRate = filteredLeads.length > 0 
       ? (filteredLeads.filter(l => l.stage === 'Converted').length / filteredLeads.length) * 100 
       : 0;
@@ -96,11 +124,10 @@ const SmartReports = () => {
         rm: s.rm
       }))
     };
-  };
+  }, [filteredSales, filteredPerformance, filteredLeads, filters]);
 
   const handleExport = async (format: 'pdf' | 'excel') => {
     try {
-      const reportData = getReportData();
       
       if (format === 'pdf') {
         await exportToPDF(reportData);

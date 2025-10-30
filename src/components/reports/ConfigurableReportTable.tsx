@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -50,7 +50,7 @@ const DEFAULT_COLUMNS: ColumnConfig[] = [
 
 const ITEMS_PER_PAGE = 5;
 
-export const ConfigurableReportTable = () => {
+export const ConfigurableReportTable = memo(() => {
   const [columns, setColumns] = useState<ColumnConfig[]>([]);
   const [configModalOpen, setConfigModalOpen] = useState(false);
   const [messageDialog, setMessageDialog] = useState({
@@ -104,7 +104,8 @@ export const ConfigurableReportTable = () => {
     setSortConfig({ key, direction });
   };
 
-  const getSortedData = () => {
+  // Memoize sorted data
+  const sortedData = useMemo(() => {
     if (!sortConfig) return DUMMY_DATA;
 
     return [...DUMMY_DATA].sort((a, b) => {
@@ -122,16 +123,24 @@ export const ConfigurableReportTable = () => {
         ? aStr.localeCompare(bStr)
         : bStr.localeCompare(aStr);
     });
-  };
+  }, [sortConfig]);
 
-  const visibleColumns = columns
-    .filter(col => col.visible)
-    .sort((a, b) => a.order - b.order);
+  // Memoize visible columns
+  const visibleColumns = useMemo(() => 
+    columns
+      .filter(col => col.visible)
+      .sort((a, b) => a.order - b.order),
+    [columns]
+  );
 
-  const sortedData = getSortedData();
-  const totalPages = Math.ceil(sortedData.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedData = sortedData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  // Memoize pagination calculations
+  const { totalPages, startIndex, paginatedData } = useMemo(() => {
+    const total = Math.ceil(sortedData.length / ITEMS_PER_PAGE);
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    const paginated = sortedData.slice(start, start + ITEMS_PER_PAGE);
+    
+    return { totalPages: total, startIndex: start, paginatedData: paginated };
+  }, [sortedData, currentPage]);
 
   const getCellValue = (row: ReportData, columnId: string) => {
     const value = row[columnId as keyof ReportData];
@@ -306,4 +315,4 @@ export const ConfigurableReportTable = () => {
       />
     </>
   );
-};
+});

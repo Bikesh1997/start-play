@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
@@ -131,6 +131,9 @@ export const ConfigureColumnsModal = ({
       <DialogContent className="max-w-2xl max-h-[80vh]">
         <DialogHeader>
           <DialogTitle>Configure Columns</DialogTitle>
+          <DialogDescription>
+            Customize which columns to display and reorder them by dragging. Save your preferred views for quick access.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">

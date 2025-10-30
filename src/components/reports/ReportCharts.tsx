@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Role } from '@/types/rbac';
@@ -26,7 +27,7 @@ const COLORS = [
   '#EF4444'  // Error red
 ];
 
-export const ReportCharts = ({ filters, userRole, type }: ReportChartsProps) => {
+export const ReportCharts = memo(({ filters, userRole, type }: ReportChartsProps) => {
   const { performanceData, categoryData, teamData } = generateChartData(filters);
 
   const getChartsForType = () => {
@@ -155,4 +156,4 @@ export const ReportCharts = ({ filters, userRole, type }: ReportChartsProps) => 
       {getChartsForType()}
     </div>
   );
-};
+});
