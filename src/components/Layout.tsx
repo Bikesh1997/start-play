@@ -223,9 +223,9 @@ alt="Ujjivan Small Finance Bank"
                 <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
                   <div className="px-2 py-2">
                     <p className="text-sm font-medium">{user?.name}</p>
-                    <p className="text-xs text-gray-500">{user?.email}</p>
-                    <p className="text-xs text-gray-500 sm:hidden">Branch: {user?.branch}</p>
-                    <Badge variant="secondary" className="bg-teal-100 text-teal-800 text-xs mt-1 sm:hidden">
+                    <p className="text-xs text-muted-foreground">{user?.email}</p>
+                    <p className="text-xs text-muted-foreground sm:hidden">Branch: {user?.branch}</p>
+                    <Badge variant="secondary" className="bg-primary/10 text-primary text-xs mt-1 sm:hidden">
                       {getRoleDisplay(user?.role || '')}
                     </Badge>
                   </div>
