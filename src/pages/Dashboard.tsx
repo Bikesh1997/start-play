@@ -39,7 +39,7 @@ const Dashboard = () => {
     
     <div className="flex justify-between items-center">
         <div>
-          <h3 className="text-2xl font-bold text-gray-900">
+          <h3 className="text-2xl font-bold text-foreground">
             {/* Welcome back,  */}
             Hey,  {user?.name.split(' ')[0]}!
           </h3>
