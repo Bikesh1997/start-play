@@ -51,7 +51,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('relationship')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Relationship Manager  (Neha)
