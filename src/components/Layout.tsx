@@ -220,7 +220,7 @@ alt="Ujjivan Small Finance Bank"
                     <ChevronDown size={14} className="sm:size-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 bg-white z-50">
+                <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
                   <div className="px-2 py-2">
                     <p className="text-sm font-medium">{user?.name}</p>
                     <p className="text-xs text-gray-500">{user?.email}</p>
