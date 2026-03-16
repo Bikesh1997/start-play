@@ -10,7 +10,7 @@ interface DemoCredentialsProps {
 const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps) => {
   return (
     <div className="mt-6 space-y-3">
-      <div className="text-center text-sm text-gray-600 mb-3">
+      <div className="text-center text-sm text-muted-foreground mb-3">
         Demo Accounts:
       </div>
       
