@@ -263,10 +263,10 @@ alt="Ujjivan Small Finance Bank"
 
       {/* Supervisor Portal Reports & Analytics Filters Bar */}
       {user?.role === 'supervisor' && (
-       <div className="bg-white border-b border-gray-200 px-2 sm:px-4 lg:px-8 overflow-x-auto">
+       <div className="bg-card border-b border-border px-2 sm:px-4 lg:px-8 overflow-x-auto">
        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 sm:py-3 gap-2 sm:gap-3 min-w-fit">
          
-         <div className="text-xs sm:text-sm font-medium text-gray-700">
+         <div className="text-xs sm:text-sm font-medium text-muted-foreground">
            {/* Optional Label or Title */}
          </div>
      
