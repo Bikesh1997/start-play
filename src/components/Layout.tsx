@@ -275,7 +275,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[90px] sm:w-[120px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Period" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {periods.map((period) => (
                  <SelectItem key={period.value} value={period.value}>
                    {period.label}
