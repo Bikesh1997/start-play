@@ -374,8 +374,8 @@ alt="Ujjivan Small Finance Bank"
                     onClick={() => setSidebarOpen(false)}
                     className={`${
                       isActive(item.href)
-                        ? 'bg-teal-50 text-teal-700 border-r-2 border-teal-500'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        ? 'bg-primary/10 text-primary border-r-2 border-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                     } group flex items-center px-3 py-2 text-sm font-medium rounded-l-md transition-colors`}
                   >
                     <Icon size={18} className="mr-3 flex-shrink-0" />
