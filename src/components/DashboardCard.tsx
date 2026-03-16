@@ -21,7 +21,7 @@ const DashboardCard = ({ title, value, subtitle, icon, trend, className = "" }: 
         <CardTitle className="text-sm font-medium text-muted-foreground">
           {title}
         </CardTitle>
-        <div className="text-teal-600">
+        <div className="text-primary">
           {icon}
         </div>
       </CardHeader>
