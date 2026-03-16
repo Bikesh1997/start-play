@@ -198,7 +198,7 @@ alt="Ujjivan Small Finance Bank"
             </div>
 
             <div className="flex items-center space-x-1 sm:space-x-4">
-              <div className="text-xs sm:text-sm text-gray-600 hidden sm:block">
+              <div className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
                 Branch: {user?.branch}
               </div>
               
