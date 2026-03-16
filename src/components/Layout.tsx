@@ -212,7 +212,7 @@ alt="Ujjivan Small Finance Bank"
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center space-x-1 sm:space-x-2 p-1 sm:p-2">
                     <Avatar className="h-6 w-6 sm:h-8 sm:w-8">
-                      <AvatarFallback className="bg-teal-100 text-teal-700 text-xs">
+                      <AvatarFallback className="bg-primary/10 text-primary text-xs">
                         {user?.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
