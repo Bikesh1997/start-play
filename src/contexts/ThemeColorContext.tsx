@@ -9,7 +9,7 @@ interface ThemeColorContextType {
 
 const ThemeColorContext = createContext<ThemeColorContextType | undefined>(undefined);
 
-const DEFAULT_COLOR = '#0f172a'; // Default dark blue
+const DEFAULT_COLOR = '#233F6B'; // Steel Blue
 
 export function ThemeColorProvider({ children }: { children: React.ReactNode }) {
   const [currentColor, setCurrentColor] = useState(DEFAULT_COLOR);
