@@ -327,7 +327,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[100px] sm:w-[130px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Campaign" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+             <SelectContent className="bg-popover z-50">
                {campaigns.map((campaign) => (
                  <SelectItem key={campaign.value} value={campaign.value}>
                    {campaign.label}
