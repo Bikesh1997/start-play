@@ -349,7 +349,7 @@ const App = () => (
               } />
 
 <Route path="/tools" element={
-                <ProtectedRoute requiredRole="sales_executive">
+                <ProtectedRoute requiredRole={["sales_executive", "inbound_agent", "relationship_manager", "supervisor"]}>
                   <Layout>
                     <Tools />
                   </Layout>

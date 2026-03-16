@@ -9,7 +9,7 @@ import { ShieldX, Home } from 'lucide-react';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  requiredRole?: 'sales_executive' | 'supervisor';
+  requiredRole?: string | string[];
 }
 
 const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
@@ -23,24 +23,22 @@ const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (requiredRole && user?.role !== requiredRole) {
+  const roles = requiredRole ? (Array.isArray(requiredRole) ? requiredRole : [requiredRole]) : [];
+  const hasAccess = roles.length === 0 || (user?.role && roles.includes(user.role));
+
+  if (!hasAccess) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="min-h-screen flex items-center justify-center bg-muted p-4">
         <Card className="max-w-md w-full">
           <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
-              <ShieldX className="w-6 h-6 text-red-600" />
+            <div className="mx-auto w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mb-4">
+              <ShieldX className="w-6 h-6 text-destructive" />
             </div>
             <CardTitle className="text-xl">Access Denied</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-center">
-            <p className="text-gray-600">
-              You don't have permission to access this page. 
-              {requiredRole && (
-                <span className="block mt-1 text-sm">
-                  Required role: <span className="font-medium">{requiredRole.replace('_', ' ')}</span>
-                </span>
-              )}
+            <p className="text-muted-foreground">
+              You don't have permission to access this page.
               {user?.role && (
                 <span className="block mt-1 text-sm">
                   Your role: <span className="font-medium">{user.role.replace('_', ' ')}</span>
@@ -49,7 +47,6 @@ const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
             </p>
             <Button 
               onClick={() => window.location.href = '/dashboard'}
-              className="bg-teal-600 hover:bg-teal-700"
             >
               <Home className="w-4 h-4 mr-2" />
               Go to Dashboard
