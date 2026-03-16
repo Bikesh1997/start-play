@@ -288,7 +288,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[80px] sm:w-[100px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="FSO" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {fsos.map((fso) => (
                  <SelectItem key={fso.value} value={fso.value}>
                    {fso.label}
