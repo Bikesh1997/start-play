@@ -203,7 +203,7 @@ alt="Ujjivan Small Finance Bank"
               </div>
               
               {/* Role Badge */}
-              <Badge variant="secondary" className="bg-teal-100 text-teal-800 text-xs hidden sm:inline-flex">
+              <Badge variant="secondary" className="bg-primary/10 text-primary text-xs hidden sm:inline-flex">
                 {getRoleDisplay(user?.role || '')}
                 {/* {user?.department && ` - ${getDepartmentDisplay(user.department)}`} */}
               </Badge>
