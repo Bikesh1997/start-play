@@ -59,7 +59,7 @@ const Dashboard = () => {
             Plan Route
           </Button>
           <Link to="/leads">
-            <Button size="sm" className="bg-teal-600 hover:bg-teal-700">
+            <Button size="sm" className="bg-primary hover:bg-primary/90">
               <Phone size={16} className="mr-2" />
               Start Calling
             </Button>
