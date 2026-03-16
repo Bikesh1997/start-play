@@ -10,7 +10,7 @@ interface DemoCredentialsProps {
 const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps) => {
   return (
     <div className="mt-6 space-y-3">
-      <div className="text-center text-sm text-gray-600 mb-3">
+      <div className="text-center text-sm text-muted-foreground mb-3">
         Demo Accounts:
       </div>
       
@@ -19,7 +19,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('sales2')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Field Executive  (Bikesh)
@@ -27,7 +27,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('inbound')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Inbound Sales   (Vikram)
@@ -35,7 +35,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('supervisor')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Supervisor 
@@ -43,7 +43,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('admin')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Admin 
@@ -51,7 +51,7 @@ const DemoCredentials = ({ onFillCredentials, isLoading }: DemoCredentialsProps)
         <Button 
           variant="outline" 
           onClick={() => onFillCredentials('relationship')}
-          className={`w-full text-xs h-10 bg-gray-100 text-gray-400`}
+          className={`w-full text-xs h-10 bg-muted text-muted-foreground`}
           disabled={isLoading}
         >
           Relationship Manager  (Neha)

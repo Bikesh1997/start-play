@@ -173,9 +173,9 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-muted/50">
       {/* Top Navigation - Full Width */}
-      <nav className="bg-white shadow-sm border-b border-gray-200 w-full">
+      <nav className="bg-card shadow-sm border-b border-border w-full">
         <div className="w-full px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between h-14 sm:h-16">
             <div className="flex items-center">
@@ -198,12 +198,12 @@ alt="Ujjivan Small Finance Bank"
             </div>
 
             <div className="flex items-center space-x-1 sm:space-x-4">
-              <div className="text-xs sm:text-sm text-gray-600 hidden sm:block">
+              <div className="text-xs sm:text-sm text-muted-foreground hidden sm:block">
                 Branch: {user?.branch}
               </div>
               
               {/* Role Badge */}
-              <Badge variant="secondary" className="bg-teal-100 text-teal-800 text-xs hidden sm:inline-flex">
+              <Badge variant="secondary" className="bg-primary/10 text-primary text-xs hidden sm:inline-flex">
                 {getRoleDisplay(user?.role || '')}
                 {/* {user?.department && ` - ${getDepartmentDisplay(user.department)}`} */}
               </Badge>
@@ -212,7 +212,7 @@ alt="Ujjivan Small Finance Bank"
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center space-x-1 sm:space-x-2 p-1 sm:p-2">
                     <Avatar className="h-6 w-6 sm:h-8 sm:w-8">
-                      <AvatarFallback className="bg-teal-100 text-teal-700 text-xs">
+                      <AvatarFallback className="bg-primary/10 text-primary text-xs">
                         {user?.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
@@ -220,12 +220,12 @@ alt="Ujjivan Small Finance Bank"
                     <ChevronDown size={14} className="sm:size-4" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 bg-white z-50">
+                <DropdownMenuContent align="end" className="w-56 bg-popover z-50">
                   <div className="px-2 py-2">
                     <p className="text-sm font-medium">{user?.name}</p>
-                    <p className="text-xs text-gray-500">{user?.email}</p>
-                    <p className="text-xs text-gray-500 sm:hidden">Branch: {user?.branch}</p>
-                    <Badge variant="secondary" className="bg-teal-100 text-teal-800 text-xs mt-1 sm:hidden">
+                    <p className="text-xs text-muted-foreground">{user?.email}</p>
+                    <p className="text-xs text-muted-foreground sm:hidden">Branch: {user?.branch}</p>
+                    <Badge variant="secondary" className="bg-primary/10 text-primary text-xs mt-1 sm:hidden">
                       {getRoleDisplay(user?.role || '')}
                     </Badge>
                   </div>
@@ -250,7 +250,7 @@ alt="Ujjivan Small Finance Bank"
                       <DropdownMenuSeparator />
                     </>
                   )}
-                  <DropdownMenuItem onClick={logout} className="text-red-600">
+                  <DropdownMenuItem onClick={logout} className="text-destructive">
                     <LogOut size={16} className="mr-2" />
                     Logout
                   </DropdownMenuItem>
@@ -263,10 +263,10 @@ alt="Ujjivan Small Finance Bank"
 
       {/* Supervisor Portal Reports & Analytics Filters Bar */}
       {user?.role === 'supervisor' && (
-       <div className="bg-white border-b border-gray-200 px-2 sm:px-4 lg:px-8 overflow-x-auto">
+       <div className="bg-card border-b border-border px-2 sm:px-4 lg:px-8 overflow-x-auto">
        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-2 sm:py-3 gap-2 sm:gap-3 min-w-fit">
          
-         <div className="text-xs sm:text-sm font-medium text-gray-700">
+         <div className="text-xs sm:text-sm font-medium text-muted-foreground">
            {/* Optional Label or Title */}
          </div>
      
@@ -275,7 +275,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[90px] sm:w-[120px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Period" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {periods.map((period) => (
                  <SelectItem key={period.value} value={period.value}>
                    {period.label}
@@ -288,7 +288,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[80px] sm:w-[100px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="FSO" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {fsos.map((fso) => (
                  <SelectItem key={fso.value} value={fso.value}>
                    {fso.label}
@@ -301,7 +301,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[90px] sm:w-[120px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Region" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {regions.map((region) => (
                  <SelectItem key={region.value} value={region.value}>
                    {region.label}
@@ -314,7 +314,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[100px] sm:w-[130px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Product" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+              <SelectContent className="bg-popover z-50">
                {products.map((product) => (
                  <SelectItem key={product.value} value={product.value}>
                    {product.label}
@@ -327,7 +327,7 @@ alt="Ujjivan Small Finance Bank"
              <SelectTrigger className="w-[100px] sm:w-[130px] h-8 sm:h-10 text-xs sm:text-sm">
                <SelectValue placeholder="Campaign" />
              </SelectTrigger>
-             <SelectContent className="bg-white z-50">
+             <SelectContent className="bg-popover z-50">
                {campaigns.map((campaign) => (
                  <SelectItem key={campaign.value} value={campaign.value}>
                    {campaign.label}
@@ -338,7 +338,7 @@ alt="Ujjivan Small Finance Bank"
      
            <Button
              onClick={handleApplyFilters}
-             className="bg-teal-600 hover:bg-teal-700 h-8 sm:h-10 px-2 sm:px-4 text-xs sm:text-sm"
+             className="bg-primary hover:bg-primary/90 h-8 sm:h-10 px-2 sm:px-4 text-xs sm:text-sm"
              size="sm"
            >
              Apply
@@ -353,10 +353,10 @@ alt="Ujjivan Small Finance Bank"
         {/* Sidebar */}
         <div className={`${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 transition-transform duration-300 ease-in-out`}>
+        } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-card shadow-lg border-r border-border transition-transform duration-300 ease-in-out`}>
           <div className="h-full overflow-y-auto pt-4 sm:pt-6">
             <div className="px-3 mb-4">
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                  {user?.role === 'admin' ? 'Admin Portal' :
                  user?.role === 'supervisor' ? 'Supervisor Portal' : 
                  user?.role === 'inbound_agent' ? 'Inbound Agent Portal' :
@@ -374,8 +374,8 @@ alt="Ujjivan Small Finance Bank"
                     onClick={() => setSidebarOpen(false)}
                     className={`${
                       isActive(item.href)
-                        ? 'bg-teal-50 text-teal-700 border-r-2 border-teal-500'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                        ? 'bg-primary/10 text-primary border-r-2 border-primary'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                     } group flex items-center px-3 py-2 text-sm font-medium rounded-l-md transition-colors`}
                   >
                     <Icon size={18} className="mr-3 flex-shrink-0" />
