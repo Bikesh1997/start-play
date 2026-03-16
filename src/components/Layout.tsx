@@ -250,7 +250,7 @@ alt="Ujjivan Small Finance Bank"
                       <DropdownMenuSeparator />
                     </>
                   )}
-                  <DropdownMenuItem onClick={logout} className="text-red-600">
+                  <DropdownMenuItem onClick={logout} className="text-destructive">
                     <LogOut size={16} className="mr-2" />
                     Logout
                   </DropdownMenuItem>
