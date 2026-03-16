@@ -353,10 +353,10 @@ alt="Ujjivan Small Finance Bank"
         {/* Sidebar */}
         <div className={`${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white shadow-lg border-r border-gray-200 transition-transform duration-300 ease-in-out`}>
+        } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-64 bg-card shadow-lg border-r border-border transition-transform duration-300 ease-in-out`}>
           <div className="h-full overflow-y-auto pt-4 sm:pt-6">
             <div className="px-3 mb-4">
-              <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+              <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                  {user?.role === 'admin' ? 'Admin Portal' :
                  user?.role === 'supervisor' ? 'Supervisor Portal' : 
                  user?.role === 'inbound_agent' ? 'Inbound Agent Portal' :
