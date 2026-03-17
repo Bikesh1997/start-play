@@ -26,7 +26,7 @@ const ThemeColorControls = ({ className }: ThemeColorControlsProps) => {
   };
 
   const presetColors = [
-    '#233F6B', // Steel Blue (Default)
+    '#3A0000', // Deep Maroon (Default)
     '#dc2626', // Red
     '#059669', // Green
     '#7c3aed', // Purple

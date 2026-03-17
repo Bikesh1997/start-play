@@ -211,35 +211,35 @@ const FieldExecutiveGameDashboard = () => {
 
       {/* Game Header */}
       <Card
-  className="text-[#1e3a2f] w-full"
+  className="text-primary-foreground w-full"
   style={{
-    background: 'linear-gradient(to right, #c9f1e4, #ffe2c4, #fff2c2)',
+    background: 'linear-gradient(to right, hsl(0 100% 11%), hsl(0 80% 20%), hsl(0 60% 28%))',
   }}
 >
   <CardContent className="p-4 sm:p-6">
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold">Welcome back, Champion! 🏆</h2>
-        <p className="text-sm sm:text-base text-[#23a07c]">Ready for today's missions?</p>
+        <p className="text-sm sm:text-base opacity-80">Ready for today's missions?</p>
       </div>
       <div className="text-left sm:text-center">
-        <div className="text-2xl sm:text-3xl font-bold text-[#f59036]">
+        <div className="text-2xl sm:text-3xl font-bold text-amber-300">
           Level {gameProgress.level}
         </div>
-        <div className="text-xs sm:text-sm text-[#23a07c]">
+        <div className="text-xs sm:text-sm opacity-80">
           {gameProgress.currentXP}/{gameProgress.nextLevelXP} XP
         </div>
       </div>
     </div>
 
     <div className="mt-4">
-      <div className="flex justify-between text-xs sm:text-sm text-[#f59036] mb-2">
+      <div className="flex justify-between text-xs sm:text-sm text-amber-300 mb-2">
         <span>Progress to Level {gameProgress.level + 1}</span>
         <span>{Math.round(progressPercentage)}%</span>
       </div>
       <Progress
         value={progressPercentage}
-        className="h-2 sm:h-3 bg-[#d2f1e7] [&>div]:bg-[#23a07c]"
+        className="h-2 sm:h-3 bg-white/20 [&>div]:bg-amber-400"
       />
     </div>
   </CardContent>
