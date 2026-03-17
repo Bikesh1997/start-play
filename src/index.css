@@ -54,10 +54,10 @@
     --popover: 220 20% 13%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 217 52% 45%;
+    --primary: 0 100% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 12% 30%;
+    --secondary: 0 30% 25%;
     --secondary-foreground: 0 0% 95%;
 
     --muted: 220 15% 18%;
